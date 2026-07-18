@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruthCheck News - Real Stories vs Misinformation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>🔍 TruthCheck News</h1>
+                <p class="tagline">Separating Real Stories from Misinformation</p>
+            </div>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-button active" onclick="switchTab('real')">✓ Real Stories</button>
+            <button class="tab-button" onclick="switchTab('misinformation')">✗ Misinformation Feed</button>
+            <button class="tab-button" onclick="switchTab('verify')">🔎 Verify a Story</button>
+        </nav>
+
+        <!-- Real Stories Tab -->
+        <div id="real" class="tab-content active">
+            <h2>Verified Real Stories</h2>
+            <p class="section-info">These stories have been fact-checked and verified by multiple sources.</p>
+            <div class="stories-grid" id="realStories">
+                <!-- Stories will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Misinformation Tab -->
+        <div id="misinformation" class="tab-content">
+            <h2>⚠️ Common Misinformation</h2>
+            <p class="section-info">Examples of false stories circulating online. Learn to spot the red flags!</p>
+            <div class="stories-grid" id="misinformationStories">
+                <!-- Stories will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Verify Tab -->
+        <div id="verify" class="tab-content">
+            <h2>Verify a Story</h2>
+            <div class="verify-form">
+                <input type="text" id="verifyInput" placeholder="Enter a news headline or story..." class="search-input">
+                <button onclick="verifyStory()" class="verify-btn">Check Story</button>
+            </div>
+            <div id="verifyResult" class="verify-result"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>TruthCheck News - Helping you find the truth in a world of information overload</p>
+        <p>Last updated: <span id="lastUpdate"></span></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
