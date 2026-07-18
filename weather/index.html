@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard - Real-time Weather Data</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>🌤️ Weather Dashboard</h1>
+                <p class="tagline">Real-time Global Weather Information</p>
+            </div>
+        </header>
+
+        <div class="search-section">
+            <div class="search-box">
+                <input type="text" id="cityInput" placeholder="Enter city name..." class="search-input">
+                <button onclick="searchWeather()" class="search-btn">Search</button>
+                <button onclick="getCurrentLocation()" class="location-btn">📍 Current Location</button>
+            </div>
+            <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+                <div class="spinner"></div>
+                <p>Fetching weather data...</p>
+            </div>
+        </div>
+
+        <div id="errorMessage" class="error-message" style="display: none;"></div>
+
+        <!-- Current Weather Section -->
+        <div id="currentWeather" class="weather-section" style="display: none;">
+            <div class="weather-card main-card">
+                <div class="city-info">
+                    <h2 id="cityName"></h2>
+                    <p id="temperature" class="temperature"></p>
+                    <p id="weatherDesc" class="weather-desc"></p>
+                </div>
+                <div class="weather-icon" id="weatherIcon"></div>
+            </div>
+
+            <!-- Weather Details Grid -->
+            <div class="details-grid">
+                <div class="detail-card">
+                    <div class="detail-icon">💧</div>
+                    <div class="detail-content">
+                        <p class="detail-label">Humidity</p>
+                        <p class="detail-value" id="humidity"></p>
+                    </div>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-icon">💨</div>
+                    <div class="detail-content">
+                        <p class="detail-label">Wind Speed</p>
+                        <p class="detail-value" id="windSpeed"></p>
+                    </div>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-icon">🌡️</div>
+                    <div class="detail-content">
+                        <p class="detail-label">Feels Like</p>
+                        <p class="detail-value" id="feelsLike"></p>
+                    </div>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-icon">🌪️</div>
+                    <div class="detail-content">
+                        <p class="detail-label">Pressure</p>
+                        <p class="detail-value" id="pressure"></p>
+                    </div>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-icon">👁️</div>
+                    <div class="detail-content">
+                        <p class="detail-label">Visibility</p>
+                        <p class="detail-value" id="visibility"></p>
+                    </div>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-icon">☀️</div>
+                    <div class="detail-content">
+                        <p class="detail-label">UV Index</p>
+                        <p class="detail-value" id="uvIndex"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sunrise/Sunset Section -->
+        <div id="sunSection" class="sun-section" style="display: none;">
+            <div class="sun-card sunrise-card">
+                <div class="sun-icon">🌅</div>
+                <div class="sun-content">
+                    <p class="sun-label">Sunrise</p>
+                    <p class="sun-time" id="sunrise"></p>
+                </div>
+            </div>
+            <div class="sun-card sunset-card">
+                <div class="sun-icon">🌇</div>
+                <div class="sun-content">
+                    <p class="sun-label">Sunset</p>
+                    <p class="sun-time" id="sunset"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5-Day Forecast Section -->
+        <div id="forecastSection" class="forecast-section" style="display: none;">
+            <h3>5-Day Forecast</h3>
+            <div class="forecast-grid" id="forecastGrid">
+                <!-- Forecast cards will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Weather Alerts Section -->
+        <div id="alertsSection" class="alerts-section" style="display: none;">
+            <h3>⚠️ Weather Alerts</h3>
+            <div id="alertsList" class="alerts-list">
+                <!-- Alerts will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Air Quality Section -->
+        <div id="airQualitySection" class="air-quality-section" style="display: none;">
+            <h3>🌬️ Air Quality</h3>
+            <div class="aq-grid">
+                <div class="aq-card">
+                    <p class="aq-label">AQI</p>
+                    <p class="aq-value" id="aqiValue"></p>
+                    <p class="aq-status" id="aqiStatus"></p>
+                </div>
+                <div class="aq-card">
+                    <p class="aq-label">PM2.5</p>
+                    <p class="aq-value" id="pm25"></p>
+                </div>
+                <div class="aq-card">
+                    <p class="aq-label">PM10</p>
+                    <p class="aq-value" id="pm10"></p>
+                </div>
+                <div class="aq-card">
+                    <p class="aq-label">O₃</p>
+                    <p class="aq-value" id="ozone"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Weather Dashboard - Powered by OpenWeatherMap API</p>
+        <p>Last updated: <span id="lastUpdate"></span></p>
+        <p class="footer-note">Data refreshes every 10 minutes</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
